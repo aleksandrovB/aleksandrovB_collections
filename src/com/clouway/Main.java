@@ -69,6 +69,8 @@ public class Main {
             integerList.add(i);
         }
 
-        callPageBean(integerList,5);
+        //callPageBean(integerList,5);
+
+        System.out.println(new FrequencyAnalyser().getMostFrequent("Niki IlievNN",new TextSplitterToSymbols()));
     }
 }
