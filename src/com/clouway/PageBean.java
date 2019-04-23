@@ -22,7 +22,11 @@ public class PageBean<T> {
      */
     public PageBean(List<T> origin, int pageSize) {
         this.origin = origin;
-        this.pageSize = pageSize;
+        if(pageSize>0)
+            this.pageSize = pageSize;
+        else {
+            this.pageSize = 1;
+        }
     }
 
     /**
@@ -111,7 +115,10 @@ public class PageBean<T> {
      * @return first page
      */
     public List<T> lastPage() {
-        if(origin.size()%pageSize!=0) {
+        if(origin.size()==0){
+            currentIndex = 0;
+            currentPageNumber = 0;
+        } else if(origin.size()%pageSize!=0) {
             currentIndex = (origin.size() / pageSize) * pageSize;
             currentPageNumber = origin.size() / pageSize;
         }else {
